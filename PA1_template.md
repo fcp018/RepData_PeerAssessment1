@@ -1,4 +1,12 @@
-# Reproducible Data:  Peer Assessment Project 1
+---
+title: 'Reproducible Data:  Peer Assessment Project 1'
+output:
+  html_document:
+    fig_caption: yes
+    highlight: tango
+    keep_md: yes
+    theme: united
+---
 
 <br>
 
@@ -62,7 +70,7 @@ ggplot(steps_per_day, aes(x = steps)) +
         labs(title="Histogram of steps per Day", x = "Steps", y = "Count with binwidth 1000")
 ```
 
-![](PA1_template_files/figure-html/Date_Steps_Plot-1.png) 
+![plot of chunk Date_Steps_Plot](figure/Date_Steps_Plot-1.png) 
 <br>
 
 #### 2.  Mean and Median of total steps Per Day 
@@ -108,7 +116,7 @@ ggplot(steps_per_int, aes(x = interval, y = IntMeansteps)) + geom_line() +
       labs(title="Time Series plot of average steps per interval", x = "Interval", y = "Mean # of steps")
 ```
 
-![](PA1_template_files/figure-html/Interval_steps_plot-1.png) 
+![plot of chunk Interval_steps_plot](figure/Interval_steps_plot-1.png) 
 <br>
 
 #### 2. Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
@@ -200,7 +208,7 @@ ggplot(imputed_stepsperday, aes(x = steps)) +
         labs(title="Histogram of steps per Day (imputed data)", x = "Steps", y = "Count with binwidth 1000")
 ```
 
-![](PA1_template_files/figure-html/Impute_data_plot-1.png) 
+![plot of chunk Impute_data_plot](figure/Impute_data_plot-1.png) 
 <br>
 
 #### 4a. Mean and Median of total steps per day (imputed)
@@ -263,5 +271,5 @@ ggplot(stepsbydaytype, aes(x = interval, y = steps)) + geom_line() + facet_grid(
       labs(title="Time Series plot of average steps per interval by day type", x = "Interval", y = "Mean # of steps")
 ```
 
-![](PA1_template_files/figure-html/Daytype_steps_plot-1.png) 
+![plot of chunk Daytype_steps_plot](figure/Daytype_steps_plot-1.png) 
 
