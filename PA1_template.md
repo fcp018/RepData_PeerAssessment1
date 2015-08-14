@@ -66,7 +66,7 @@ steps_per_day <- aggregate(steps ~ date, data=omit_NA_data, FUN = "sum")
 library(ggplot2)
 
 ggplot(steps_per_day, aes(x = steps)) + 
-       geom_histogram(fill = "skyblue", binwidth = 1000) + 
+       geom_histogram(fill = "skyblue", binwidth = 1000) + scale_color_hue(l=80) +
         labs(title="Histogram of steps per Day", x = "Steps", y = "Count with binwidth 1000")
 ```
 
@@ -94,7 +94,8 @@ median1
 ## [1] 10765
 ```
 <br>
-The mean is **10766.19** steps.  The median is **10765** steps
+
+#### The mean # of steps per day is **10766.19** steps.  The median is **10765** steps
 
 <br><br>
 
@@ -112,7 +113,7 @@ steps_per_int <- aggregate(steps ~ interval, data=omit_NA_data, FUN = "mean")
 steps_per_int$interval <- as.numeric(as.character(steps_per_int$interval))
 names(steps_per_int)[2] <- "IntMeansteps"
 
-ggplot(steps_per_int, aes(x = interval, y = IntMeansteps)) + geom_line() +
+ggplot(steps_per_int, aes(x = interval, y = IntMeansteps)) + geom_line(color="blue") + 
       labs(title="Time Series plot of average steps per interval", x = "Interval", y = "Mean # of steps")
 ```
 
@@ -138,7 +139,7 @@ max_intmeansteps <- round(max_int$IntMeansteps, digits=2)
 ```
 <br>
 
-The 5-minute interval with maxium number of steps on average is **835** with **206.17** steps
+#### The 5-minute interval with maxium number of steps on average is **835** with **206.17** steps
 
 <br><br>
 
@@ -157,7 +158,8 @@ total_NAs
 ## [1] 2304
 ```
 <br>
-**2304** rows have NA values.
+
+#### **2304** rows have NA values.
 
 <br>
 
@@ -204,7 +206,7 @@ str(imputed_data)
 imputed_stepsperday <- aggregate(steps ~ date, data=imputed_data, FUN = "sum")
 
 ggplot(imputed_stepsperday, aes(x = steps)) + 
-       geom_histogram(fill = "skyblue", binwidth = 1000) + 
+       geom_histogram(fill = "skyblue", binwidth = 1000) + scale_color_hue(l=80) +
         labs(title="Histogram of steps per Day (imputed data)", x = "Steps", y = "Count with binwidth 1000")
 ```
 
@@ -232,7 +234,8 @@ median2
 ## [1] 10766.19
 ```
 <br>
-The mean steps per day after imputed data is **10766.19**.  The median is **10766.19**   
+
+#### The mean steps per day after imputed data is **10766.19**.  The median is **10766.19**   
 
 <br>
 The differences between imputed data and original estimates.
@@ -244,9 +247,8 @@ delta1 <- mean1 - mean2
 delta2 <- median1 - median2
 ```
 <br>
-The results from imputed data differ very slightly from original estimates
 
-The delta between means of imputed data and original estimate is **0**.  The delta in median is **-1.19**.  
+#### The results from imputed data differ very slightly from original estimates with **0**  delta between means and **-1.19** delta between medians.
 
 <br><br>
 
@@ -267,7 +269,7 @@ imputed_data$Day <-  ifelse(as.POSIXlt(imputed_data$date)$wday %in% c(0,6), 'wee
 ```r
 stepsbydaytype <- aggregate(steps ~ interval + Day, data=imputed_data, FUN = "mean")
 
-ggplot(stepsbydaytype, aes(x = interval, y = steps)) + geom_line() + facet_grid(Day~.)+
+ggplot(stepsbydaytype, aes(x = interval, y = steps)) + geom_line(color="blue") + facet_grid(Day~.)+
       labs(title="Time Series plot of average steps per interval by day type", x = "Interval", y = "Mean # of steps")
 ```
 
